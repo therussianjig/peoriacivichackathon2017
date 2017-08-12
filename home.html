@@ -18,7 +18,7 @@
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 
     .row.content {
-      height: 450px
+      height: auto;
     }
     /* Set gray background color and 100% height */
 
@@ -91,17 +91,7 @@
 
   <div class="container-fluid text-center">
     <div class="row content">
-      <div class="col-sm-8 text-left">
-        <h1>Where will your business be?</h1>
-        <button type="button" class="btn btn-info" onclick="getCurrentLocation()">Current Location</button>
-        <div class="input-group">
-          <span class="input-group-addon">Location 1</span> <input id="msg_1" type="text" class="controls">
-        </div>
-        <div class="btn-group">
-          <!-- I Couldnt get this button to work -->
-          <!-- <button type="button" class="btn btn-primary" onclick="addPin()">Add Pin</button>  -->
-          <button type="button" class="btn btn-danger"  onclick="clearPins()">Clear Pins</button>    
-        </div>
+      <div class="col-sm-10 text-left">
         <hr>
         <h4>Filter Construction by Date:</h4>
         <div class="table-responsive">
@@ -171,77 +161,34 @@
           </table>
         </div>
         <button onclick="filterCallback()">Filter By Year</button>
-        <!-- <div class="form-group">
-            <label for="startYear">Start Year:</label>
-            <select class="form-control" id="startYear">
-              <option>2016</option>
-              <option>2017</option>
-              <option>2018</option>
-              <option>2019</option>
-              <option>2020</option>
-            </select>
-
-
-              <label for="startMonth">Start Month:</label>
-              <select class="form-control" id="startMonth">
-                <option>Jan</option>
-                <option>Feb</option>
-                <option>Mar</option>
-                <option>April</option>
-                <option>May</option>
-                <option>June</option>
-                <option>July</option>
-                <option>Aug</option>
-                <option>Sept</option>
-                <option>Oct</option>
-                <option>Nov</option>
-                <option>Dec</option>
-              </select>
-
-
-                <label for="endYear">End Year:</label>
-                <select class="form-control" id="endYear">
-                  <option>2016</option>
-                  <option>2017</option>
-                  <option>2018</option>
-                  <option>2019</option>
-                  <option>2020</option>
-                </select>
-
-    
-
-                  <label for="endMonth">End Month:</label>
-                  <select class="form-control" id="endMonth">
-                    <option>Jan</option>
-                    <option>Feb</option>
-                    <option>Mar</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>Aug</option>
-                    <option>Sept</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dec</option>
-                  </select>
-                
-                  <button onclick="filterCallback()">Filter By Year</button>
-                </div> -->
-
         <hr>
-        <div class="embed-responsive embed-responsive-16by9">
-          <div class="embed-responsive-item" id="map" style="width:1200px;height:720px;"></div>
+        <div class="input-group">
+          <span class="input-group-addon">Address</span> <input id="msg_1" type="text" class="form-control">
         </div>
-      </div>
-      <div class="col-sm-2 sidenav">
-        <div class="checkbox"><label><input type="checkbox" id="Construction" value="">Construction</label></div>
-        <div class="checkbox"><label><input type="checkbox" id="BusRoutes" value="">Bus Routes</label></div>
-        <div class="checkbox"><label><input type="checkbox" id="BikeRoutes" value="">Bike Routes</label></div>
-      </div>
+        <div class="btn-group">
+          <!-- I Couldnt get this button to work -->
+          <!-- <button type="button" class="btn btn-primary" onclick="addPin()">Add Pin</button>  -->
+          <button type="button" class="btn btn-info" onclick="getCurrentLocation()">Current Location</button>
+          <button type="button" class="btn btn-danger"  onclick="clearPins()">Clear Pins</button>    
+        </div>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <hr>
     </div>
   </div>
-
+  <hr>
+  <div class = "row">
+    <div class="col-sm-10">
+      <div class="embed-responsive embed-responsive-16by9">
+        <div class="embed-responsive-item" id="map"></div>
+      </div>
+    </div>
+    <div class="col-sm-2 sidenav">
+        <div class="checkbox text-left"><label><input type="checkbox" id="Construction" value="">Construction</label></div>
+        <div class="checkbox text-left"><label><input type="checkbox" id="BusRoutes" value="">Bus Routes</label></div>
+        <div class="checkbox text-left"><label><input type="checkbox" id="BikeRoutes" value="">Bike Routes</label></div>
+    </div>
+</div>
   <footer class="container-fluid text-center">
     <p>Footer Text</p>
   </footer>
@@ -344,28 +291,28 @@
         // Try HTML5 geolocation.
         if (navigator.geolocation) 
         {
-          navigator.geolocation.getCurrentPosition(function(position) 
+          navigator.geolocation.getCurrentPosition(
+          function(position) 
           {
             currentPosition = {lat: position.coords.latitude,lng: position.coords.longitude};
             map.setCenter(currentPosition);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
 
-/* Trying to set the suggested text for the address bar to current location, but it is sucking */
-  //         var geocoder = new google.maps.Geocoder;
-  //         geocoder.geocode({'location': currentPosition}, function(results, status) {
-  //           if (status === 'OK') {
-  //             if (results[0]) {
-  //               document.getElementById('msg_1').placeholder = results[0].formatted_address;
-  //             } else {
-  //               window.alert('No results found');
-  //             }
-  //           } else {
-  //             window.alert('Geocoder failed due to: ' + status);
-  //           }
-  //         });
-
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({'location': currentPosition}, 
+              function(results, status) 
+              {
+                if (status === 'OK') {
+                  if (results[0]) {
+                    document.getElementById('msg_1').placeholder = results[0].formatted_address;
+                  } else {
+                    window.alert('No results found');
+                  }
+                } else {
+                  window.alert('Geocoder failed due to: ' + status);
+                }
+             });
+          }, 
+          function(){});
         } 
         else 
         {
