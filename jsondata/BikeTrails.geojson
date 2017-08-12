@@ -10,7 +10,7 @@
     "features": [{
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.51107277252600003,
                 "LengthFt": 2698.4642389400001,
                 "Shape_Leng": 2698.4642681
@@ -55,7 +55,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.00618054434,
                 "LengthFt": 5312.6332741300002,
                 "Shape_Leng": 5312.6332778699998
@@ -549,7 +549,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.0072875685,
                 "LengthFt": 5318.4783616699997,
                 "Shape_Leng": 5318.4786144199998
@@ -577,7 +577,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.4544668190200001,
                 "LengthFt": 7679.58480444,
                 "Shape_Leng": 7679.5847579800002
@@ -621,7 +621,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.50556981967799997,
                 "LengthFt": 2669.4086478999998,
                 "Shape_Leng": 2669.4085447399998
@@ -649,7 +649,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.0768402772500001,
                 "LengthFt": 5685.7166638799999,
                 "Shape_Leng": 5685.7167470100003
@@ -679,7 +679,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 3.0241631505000002,
                 "LengthFt": 15967.581434600001,
                 "Shape_Leng": 15967.5815564
@@ -732,7 +732,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.31159483093200002,
                 "LengthFt": 1645.22070732,
                 "Shape_Leng": 1645.2206443600001
@@ -754,7 +754,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 3.138187301,
                 "LengthFt": 16569.6289493,
                 "Shape_Leng": 16569.6289201
@@ -782,7 +782,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.50192250967600005,
                 "LengthFt": 2650.1508510899998,
                 "Shape_Leng": 2650.1505761600001
@@ -802,7 +802,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.77970650439,
                 "LengthFt": 9396.8503431900008,
                 "Shape_Leng": 9396.8501916200003
@@ -837,7 +837,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.9295518603899999,
                 "LengthFt": 10188.033822900001,
                 "Shape_Leng": 10188.0338391
@@ -868,7 +868,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.54099336649600005,
                 "LengthFt": 2856.4449751000002,
                 "Shape_Leng": 2856.4450959599999
@@ -925,7 +925,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.27860340396400002,
                 "LengthFt": 1471.0259729300001,
                 "Shape_Leng": 1471.02586473
@@ -948,7 +948,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.36491794111499998,
                 "LengthFt": 1926.7667290899999,
                 "Shape_Leng": 1926.76683325
@@ -976,7 +976,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.57033433404,
                 "LengthFt": 3011.3652837300001,
                 "Shape_Leng": 3011.3653200099998
@@ -1023,7 +1023,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.51031473148100004,
                 "LengthFt": 2694.4617822199998,
                 "Shape_Leng": 2694.4617625000001
@@ -1049,7 +1049,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.66720861481,
                 "LengthFt": 8802.8614862100003,
                 "Shape_Leng": 8802.85970456
@@ -1583,7 +1583,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.327834833198,
                 "LengthFt": 1730.9679192900001,
                 "Shape_Leng": 1730.9680626899999
@@ -1637,7 +1637,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.04784589187,
                 "LengthFt": 5532.6263090499997,
                 "Shape_Leng": 5532.6255360599998
@@ -2384,7 +2384,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.17346286683,
                 "LengthFt": 6195.8839368400004,
                 "Shape_Leng": 6195.8836004499999
@@ -2477,7 +2477,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.0164582924600001,
                 "LengthFt": 5366.8997841800001,
                 "Shape_Leng": 5366.9004338900004
@@ -2585,7 +2585,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.49773808977400003,
                 "LengthFt": 2628.0571140100001,
                 "Shape_Leng": 2628.0571728800001
@@ -2605,7 +2605,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.319364788003,
                 "LengthFt": 1686.2460806500001,
                 "Shape_Leng": 1686.24596004
@@ -2853,7 +2853,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.61639442769099995,
                 "LengthFt": 3254.5625782100001,
                 "Shape_Leng": 3254.56268004
@@ -2978,7 +2978,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.24417267814,
                 "LengthFt": 6569.2317406000002,
                 "Shape_Leng": 6569.2316542899998
@@ -3076,7 +3076,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.1231058436000001,
                 "LengthFt": 5929.9988542199999,
                 "Shape_Leng": 5929.9985677499999
@@ -3114,7 +3114,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.25516972490700002,
                 "LengthFt": 1347.2961475100001,
                 "Shape_Leng": 1347.2967645700001
@@ -3269,7 +3269,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.221393137051,
                 "LengthFt": 1168.9557636300001,
                 "Shape_Leng": 1168.9558453899999
@@ -3428,7 +3428,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.239394939985,
                 "LengthFt": 1264.0052831200001,
                 "Shape_Leng": 1264.00514851
@@ -3459,7 +3459,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.259759758738,
                 "LengthFt": 1371.5315261400001,
                 "Shape_Leng": 1371.53176869
@@ -3496,7 +3496,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.41574549850600001,
                 "LengthFt": 2195.13623211,
                 "Shape_Leng": 2195.13630582
@@ -3829,7 +3829,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 1.3450470127900001,
                 "LengthFt": 7101.8482275400002,
                 "Shape_Leng": 7101.8480404000002
@@ -4333,7 +4333,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.21433273329300001,
                 "LengthFt": 1131.6768317900001,
                 "Shape_Leng": 1131.67687359
@@ -4351,7 +4351,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.94999278252899999,
                 "LengthFt": 5015.9618917600001,
                 "Shape_Leng": 5015.9616160899996
@@ -4417,7 +4417,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.052606267197500001,
                 "LengthFt": 277.761090803,
                 "Shape_Leng": 277.76103802
@@ -4437,7 +4437,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.184142965224,
                 "LengthFt": 972.27485638400003,
                 "Shape_Leng": 972.27506451900001
@@ -4465,7 +4465,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.118826646836,
                 "LengthFt": 627.40469529300003,
                 "Shape_Leng": 627.4049036
@@ -4492,7 +4492,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.565576363804,
                 "LengthFt": 2986.24320089,
                 "Shape_Leng": 2986.24305465
@@ -4536,7 +4536,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.49613176624799998,
                 "LengthFt": 2619.57572579,
                 "Shape_Leng": 2619.57572772
@@ -4567,7 +4567,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.60365325819299998,
                 "LengthFt": 3187.2892032599998,
                 "Shape_Leng": 3187.2892252199999
@@ -5194,7 +5194,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.42219723816,
                 "LengthFt": 2229.2014174800001,
                 "Shape_Leng": 2229.2012839600002
@@ -5232,7 +5232,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.34722499115700001,
                 "LengthFt": 1833.3479533100001,
                 "Shape_Leng": 1833.3479899399999
@@ -5265,7 +5265,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.29468815927199998,
                 "LengthFt": 1555.95348096,
                 "Shape_Leng": 1555.9533201900001
@@ -5293,7 +5293,7 @@
         {
             "type": "Feature",
             "properties": {
-                "TypeID": "BikeTrails",
+                "TypeId": "BikeTrails",
                 "LengthMi": 0.328802460086,
                 "LengthFt": 1736.0769892599999,
                 "Shape_Leng": 1736.0768199500001
