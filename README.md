@@ -6,6 +6,7 @@ It is designed with a user-facing webpage (app coming soon!) and a database mana
 ## Screenshots
 
 ![Home Page](/images/homeScreen.png?raw=true "Optional Title")
+![Participate Page](/images/participateScreen.png?raw=true "Optional Title")
 
 ## Data/APIs used
 
