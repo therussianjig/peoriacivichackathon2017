@@ -338,6 +338,8 @@
           return;
         }
 
+        
+
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
         places.forEach(function (place) {
@@ -372,6 +374,98 @@
         map.fitBounds(bounds);
       });
 
+//Hover
+
+
+
+var infowindow = new google.maps.InfoWindow({
+          content: "test",
+          pixelOffset: new google.maps.Size(0, -30)
+        });
+
+      map.data.addListener('mouseover', function(event) {
+        var infoText; 
+
+        map.data.revertStyle();
+        
+
+        var anchor = new google.maps.MVCObject();
+        anchor.setValues({ //position of the point
+            position: event.latLng,
+            anchorPoint: new google.maps.Point(0, 0)
+        });
+        
+        if (event.feature.getProperty('TypeId') === 'ArterialRecon')
+        {
+          infoText = "<p><strong>Construction Type: </strong>" + "Arterial Reconstruction" + "</p>";
+          infoText += "<p><strong>Project Street: </strong>" + event.feature.getProperty('ProjStreet') + "</p>";
+          infoText += "<p><strong>Start Year: </strong>" + event.feature.getProperty('Year') + "</p>";
+          infoText += "<p><strong>Start Month: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstStart')) + "</p>";
+          infoText += "<p><strong>End Date: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstEnd')) + "</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 2});
+        }
+
+        else if (event.feature.getProperty('TypeId') === 'SidewalkConstruction')
+        {
+          infoText = "<p><strong>Construction Type: </strong>" + "Sidewalk Reconstruction" + "</p>";
+          infoText += "<p><strong>Project Street: </strong>" + event.feature.getProperty('Road') + "</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 2});
+        }
+        else if (event.feature.getProperty('TypeId') === 'ResidentialRecon')
+        {
+          infoText = "<p><strong>Construction Type: </strong>" + "Residential Reconstruction" + "</p>";
+          infoText += "<p><strong>Project Street: </strong>" + event.feature.getProperty('ProjStreet') + "</p>";
+          infoText += "<p><strong>Start Year: </strong>" + event.feature.getProperty('Year') + "</p>";
+          infoText += "<p><strong>Start Month: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstStart')) + "</p>";
+          infoText += "<p><strong>End Date: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstEnd')) + "</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 2});
+        }
+
+        else if (event.feature.getProperty('TypeId') === 'Pavement2017')
+        {
+          infoText = "<p><strong>Construction Type: </strong>" + "Pavement Repair" + "</p>";
+          infoText += "<p><strong>Project Street: </strong>" + event.feature.getProperty('BranchName') + "</p>";
+          infoText += "<p><strong>Start Year: </strong> 2017 </p>";
+          infoText += "<p><strong>Start Month: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstStart')) + "</p>";
+          infoText += "<p><strong>End Date: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstEnd')) + "</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 2});
+        }
+
+        else if (event.feature.getProperty('TypeId')==='BikeTrails')
+        {
+          infoText = "<p><strong>Off Road Bike Trail: </strong></p>";
+          infoText += "<p><strong>Distance: </strong>" + replaceNullWithUndefined(event.feature.getProperty('LengthMi')) + " Mi</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 6});
+        }
+
+        else if (event.feature.getProperty('TypeId')==='OnRoadBikeTrails')
+        {
+          infoText = "<p><strong>On Road Bike Trail: </strong>" + event.feature.getProperty('Name')+"</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 6});
+        }
+
+        else if (event.feature.getProperty('TypeId')==='BusRoutes')
+        {
+          infoText = "<p><strong>Route Name: </strong>" + event.feature.getProperty('RouteName')+"</p>";
+          infoText += "<p><strong>Distance: </strong>" + replaceNullWithUndefined(event.feature.getProperty('Distance')) + " Mi</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 6});
+        }
+
+
+        else if (event.feature.getProperty('TypeId')==='BusStopShelters')
+        {
+          infoText = "<p><strong>Route Name: </strong>" + event.feature.getProperty('BusRoute')+"</p>";
+          infoText += "<p><strong>City: </strong>" + event.feature.getProperty('City') + "</p>";
+          infoText += "<p><strong>Has Trash Receptical: </strong>" +  event.feature.getProperty('TrashCan') + "</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 6});
+        }
+        infowindow.setContent(infoText);
+        infowindow.open(map, anchor);
+        });
+    
+
+
+
       map.data.setStyle(function (feature) {
         var name = feature.getProperty('TypeId');
         //alert(name);
@@ -397,22 +491,31 @@
           strokeColor = 'black';
         }
 
-        else if ((name === 'BikeTrails') || (name === 'OnRoadBikeTrails'))
+        else if (name === 'BikeTrails') 
+        {
+          weight = 3;
+          innerColor = 'black'
+          strokeColor = 'lime';
+        }
+        else if (name === 'OnRoadBikeTrails')
         {
           weight = 3;
           innerColor = 'black'
           strokeColor = 'green';
         }
+
         return {
           fillColor: innerColor,
           strokeWeight: weight,
           strokeColor: strokeColor
         };
       });
+    }
+
 
       
 
-      $('input#Construction').change(function () {
+    $('input#Construction').change(function () {
       if ($('input#Construction').is(':checked')) {
         map.data.loadGeoJson('jsondata/ArterialRecon.geojson');
         map.data.loadGeoJson('jsondata/ResidentialRecon.geojson');
@@ -466,6 +569,16 @@
       }
     });
 
+    function replaceNullWithUndefined(input)
+    {
+      if (input === null)
+      {
+        return "TBD"
+      }
+
+      else{
+        return input;
+      }
     }
 
     function addPin()
