@@ -383,7 +383,7 @@ var infowindow = new google.maps.InfoWindow({
         var infoText; 
 
         map.data.revertStyle();
-        map.data.overrideStyle(event.feature, {strokeWeight: 2});
+        
 
         var anchor = new google.maps.MVCObject();
         anchor.setValues({ //position of the point
@@ -398,12 +398,14 @@ var infowindow = new google.maps.InfoWindow({
           infoText += "<p><strong>Start Year: </strong>" + event.feature.getProperty('Year') + "</p>";
           infoText += "<p><strong>Start Month: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstStart')) + "</p>";
           infoText += "<p><strong>End Date: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstEnd')) + "</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 2});
         }
 
         else if (event.feature.getProperty('TypeId') === 'SidewalkConstruction')
         {
           infoText = "<p><strong>Construction Type: </strong>" + "Sidewalk Reconstruction" + "</p>";
           infoText += "<p><strong>Project Street: </strong>" + event.feature.getProperty('Road') + "</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 2});
         }
         else if (event.feature.getProperty('TypeId') === 'ResidentialRecon')
         {
@@ -412,6 +414,7 @@ var infowindow = new google.maps.InfoWindow({
           infoText += "<p><strong>Start Year: </strong>" + event.feature.getProperty('Year') + "</p>";
           infoText += "<p><strong>Start Month: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstStart')) + "</p>";
           infoText += "<p><strong>End Date: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstEnd')) + "</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 2});
         }
 
         else if (event.feature.getProperty('TypeId') === 'Pavement2017')
@@ -421,8 +424,37 @@ var infowindow = new google.maps.InfoWindow({
           infoText += "<p><strong>Start Year: </strong> 2017 </p>";
           infoText += "<p><strong>Start Month: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstStart')) + "</p>";
           infoText += "<p><strong>End Date: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstEnd')) + "</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 2});
         }
 
+        else if (event.feature.getProperty('TypeId')==='BikeTrails')
+        {
+          infoText = "<p><strong>Off Road Bike Trail: </strong></p>";
+          infoText += "<p><strong>Distance: </strong>" + replaceNullWithUndefined(event.feature.getProperty('LengthMi')) + " Mi</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 6});
+        }
+
+        else if (event.feature.getProperty('TypeId')==='OnRoadBikeTrails')
+        {
+          infoText = "<p><strong>On Road Bike Trail: </strong>" + event.feature.getProperty('Name')+"</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 6});
+        }
+
+        else if (event.feature.getProperty('TypeId')==='BusRoutes')
+        {
+          infoText = "<p><strong>Route Name: </strong>" + event.feature.getProperty('RouteName')+"</p>";
+          infoText += "<p><strong>Distance: </strong>" + replaceNullWithUndefined(event.feature.getProperty('Distance')) + " Mi</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 6});
+        }
+
+
+        else if (event.feature.getProperty('TypeId')==='BusStopShelters')
+        {
+          infoText = "<p><strong>Route Name: </strong>" + event.feature.getProperty('BusRoute')+"</p>";
+          infoText += "<p><strong>City: </strong>" + event.feature.getProperty('City') + "</p>";
+          infoText += "<p><strong>Has Trash Receptical: </strong>" +  event.feature.getProperty('TrashCan') + "</p>";
+          map.data.overrideStyle(event.feature, {strokeWeight: 6});
+        }
         infowindow.setContent(infoText);
         infowindow.open(map, anchor);
         });
@@ -455,12 +487,19 @@ var infowindow = new google.maps.InfoWindow({
           strokeColor = 'black';
         }
 
-        else if ((name === 'BikeTrails') || (name === 'OnRoadBikeTrails'))
+        else if (name === 'BikeTrails') 
+        {
+          weight = 3;
+          innerColor = 'black'
+          strokeColor = 'lime';
+        }
+        else if (name === 'OnRoadBikeTrails')
         {
           weight = 3;
           innerColor = 'black'
           strokeColor = 'green';
         }
+
         return {
           fillColor: innerColor,
           strokeWeight: weight,
