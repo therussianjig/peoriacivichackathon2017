@@ -171,64 +171,7 @@
           </table>
         </div>
         <button onclick="filterCallback()">Filter By Year</button>
-        <!-- <div class="form-group">
-            <label for="startYear">Start Year:</label>
-            <select class="form-control" id="startYear">
-              <option>2016</option>
-              <option>2017</option>
-              <option>2018</option>
-              <option>2019</option>
-              <option>2020</option>
-            </select>
-
-
-              <label for="startMonth">Start Month:</label>
-              <select class="form-control" id="startMonth">
-                <option>Jan</option>
-                <option>Feb</option>
-                <option>Mar</option>
-                <option>April</option>
-                <option>May</option>
-                <option>June</option>
-                <option>July</option>
-                <option>Aug</option>
-                <option>Sept</option>
-                <option>Oct</option>
-                <option>Nov</option>
-                <option>Dec</option>
-              </select>
-
-
-                <label for="endYear">End Year:</label>
-                <select class="form-control" id="endYear">
-                  <option>2016</option>
-                  <option>2017</option>
-                  <option>2018</option>
-                  <option>2019</option>
-                  <option>2020</option>
-                </select>
-
-    
-
-                  <label for="endMonth">End Month:</label>
-                  <select class="form-control" id="endMonth">
-                    <option>Jan</option>
-                    <option>Feb</option>
-                    <option>Mar</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>Aug</option>
-                    <option>Sept</option>
-                    <option>Oct</option>
-                    <option>Nov</option>
-                    <option>Dec</option>
-                  </select>
-                
-                  <button onclick="filterCallback()">Filter By Year</button>
-                </div> -->
-
+ 
         <hr>
         <div class="embed-responsive embed-responsive-16by9">
           <div class="embed-responsive-item" id="map" style="width:1200px;height:720px;"></div>
@@ -325,7 +268,7 @@
         }
   }
 
-    
+
     function initAutocomplete() 
     {
       var geocoder = new google.maps.Geocoder;
@@ -391,6 +334,8 @@
           return;
         }
 
+        
+
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
         places.forEach(function (place) {
@@ -424,6 +369,66 @@
         });
         map.fitBounds(bounds);
       });
+
+//Hover
+
+
+
+var infowindow = new google.maps.InfoWindow({
+          content: "test",
+          pixelOffset: new google.maps.Size(0, -30)
+        });
+
+      map.data.addListener('mouseover', function(event) {
+        var infoText; 
+
+        map.data.revertStyle();
+        map.data.overrideStyle(event.feature, {strokeWeight: 2});
+
+        var anchor = new google.maps.MVCObject();
+        anchor.setValues({ //position of the point
+            position: event.latLng,
+            anchorPoint: new google.maps.Point(0, 0)
+        });
+        
+        if (event.feature.getProperty('TypeId') === 'ArterialRecon')
+        {
+          infoText = "<p><strong>Construction Type: </strong>" + "Arterial Reconstruction" + "</p>";
+          infoText += "<p><strong>Project Street: </strong>" + event.feature.getProperty('ProjStreet') + "</p>";
+          infoText += "<p><strong>Start Year: </strong>" + event.feature.getProperty('Year') + "</p>";
+          infoText += "<p><strong>Start Month: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstStart')) + "</p>";
+          infoText += "<p><strong>End Date: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstEnd')) + "</p>";
+        }
+
+        else if (event.feature.getProperty('TypeId') === 'SidewalkConstruction')
+        {
+          infoText = "<p><strong>Construction Type: </strong>" + "Sidewalk Reconstruction" + "</p>";
+          infoText += "<p><strong>Project Street: </strong>" + event.feature.getProperty('Road') + "</p>";
+        }
+        else if (event.feature.getProperty('TypeId') === 'ResidentialRecon')
+        {
+          infoText = "<p><strong>Construction Type: </strong>" + "Residential Reconstruction" + "</p>";
+          infoText += "<p><strong>Project Street: </strong>" + event.feature.getProperty('ProjStreet') + "</p>";
+          infoText += "<p><strong>Start Year: </strong>" + event.feature.getProperty('Year') + "</p>";
+          infoText += "<p><strong>Start Month: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstStart')) + "</p>";
+          infoText += "<p><strong>End Date: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstEnd')) + "</p>";
+        }
+
+        else if (event.feature.getProperty('TypeId') === 'Pavement2017')
+        {
+          infoText = "<p><strong>Construction Type: </strong>" + "Pavement Repair" + "</p>";
+          infoText += "<p><strong>Project Street: </strong>" + event.feature.getProperty('BranchName') + "</p>";
+          infoText += "<p><strong>Start Year: </strong> 2017 </p>";
+          infoText += "<p><strong>Start Month: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstStart')) + "</p>";
+          infoText += "<p><strong>End Date: </strong>" + replaceNullWithUndefined(event.feature.getProperty('EstEnd')) + "</p>";
+        }
+
+        infowindow.setContent(infoText);
+        infowindow.open(map, anchor);
+        });
+    
+
+
 
       map.data.setStyle(function (feature) {
         var name = feature.getProperty('TypeId');
@@ -462,10 +467,12 @@
           strokeColor: strokeColor
         };
       });
+    }
+
 
       
 
-      $('input#Construction').change(function () {
+    $('input#Construction').change(function () {
       if ($('input#Construction').is(':checked')) {
         map.data.loadGeoJson('jsondata/ArterialRecon.geojson');
         map.data.loadGeoJson('jsondata/ResidentialRecon.geojson');
@@ -519,6 +526,16 @@
       }
     });
 
+    function replaceNullWithUndefined(input)
+    {
+      if (input === null)
+      {
+        return "TBD"
+      }
+
+      else{
+        return input;
+      }
     }
 
     function addPin()
