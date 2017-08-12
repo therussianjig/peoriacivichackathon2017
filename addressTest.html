@@ -193,7 +193,6 @@
       } else {
         map.data.forEach(function (feature) {
           var name = feature.getProperty('TypeId');
-          //alert(name);
           if ((name === 'BusRoutes') || (name === 'BusStopShelters')){
             map.data.remove(feature);
           }

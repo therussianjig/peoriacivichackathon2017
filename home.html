@@ -103,9 +103,9 @@
         </div>
       </div>
       <div class="col-sm-2 sidenav">
-        <div class="checkbox"><label><input type="checkbox" value="">Construction</label></div>
-        <div class="checkbox"><label><input type="checkbox" value="">Accessability Ramps</label></div>
-        <div class="checkbox"><label><input type="checkbox" value="">Waist Receptacles</label></div>
+        <div class="checkbox"><label><input type="checkbox" id="Construction" value="">Construction</label></div>
+        <div class="checkbox"><label><input type="checkbox" id="BusRoutes" value="">Bus Routes</label></div>
+        <div class="checkbox"><label><input type="checkbox" id="BikeRoutes" value="">Bike Routes</label></div>
       </div>
     </div>
   </div>
@@ -229,32 +229,97 @@
         map.fitBounds(bounds);
       });
 
-      //Load JSON DAta
-      map.data.loadGeoJson('jsondata/ResidentialRecon.geojson');
-      map.data.loadGeoJson('jsondata/Pavement2017.geojson');
-
-      // setTimeout(function() {
-      //   map.data.forEach(function(feature){
-      //   console.log("here");
-      //   console.log("Id from Google's feature: " + feature.getProperty('TypeId'));
-      // });
-      // }, 4500);
-
       map.data.setStyle(function (feature) {
         var name = feature.getProperty('TypeId');
         //alert(name);
-        if (name === 'Pavement2017') {
-          color = 'blue';
-        } else if (name === 'ResidentialRecon') {
-          color = 'green';
+        if ((name === 'Pavement2017') || (name === 'ResidentialRecon')
+          || (name === 'SidewalkConstruction')
+          || (name === 'ArterialRecon')) {
+          innerColor = 'red';
+          strokeColor = 'black';
+          weight = 1;
+          }
+        else if (name === 'BusRoutes')
+        {
+          weight = 3;
+          innerColor = 'black';
+          strokeColor = 'blue';
+        }
+
+        else if (name ==='BusStopShelters')
+        {
+          //alert('shelter');
+          weight = 6;
+          innerColor = 'black';
+          strokeColor = 'black';
+        }
+
+        else if ((name === 'BikeTrails') || (name === 'OnRoadBikeTrails'))
+        {
+          weight = 3;
+          innerColor = 'black'
+          strokeColor = 'green';
         }
         return {
-          fillColor: color,
-          strokeWeight: 1
+          fillColor: innerColor,
+          strokeWeight: weight,
+          strokeColor: strokeColor
         };
       });
 
+      $('input#Construction').change(function () {
+      if ($('input#Construction').is(':checked')) {
+        map.data.loadGeoJson('jsondata/ArterialRecon.geojson');
+        map.data.loadGeoJson('jsondata/ResidentialRecon.geojson');
+        map.data.loadGeoJson('jsondata/Pavement2017.geojson');
+        //map.data.loadGeoJson('jsondata/RampConstruction.geojson');
+        map.data.loadGeoJson('jsondata/SidewalkConstruction.geojson');
+      } else {
+        map.data.forEach(function (feature) {
+          var name = feature.getProperty('TypeId');
+          //alert(name);
+          if ((name === 'Pavement2017') || (name === 'ResidentialRecon')
+          || (name === 'SidewalkConstruction')
+          || (name === 'ArterialRecon')) {
+            map.data.remove(feature);
+          }
 
+        });
+      }
+    });
+
+    $('input#BusRoutes').change(function () {
+      if ($('input#BusRoutes').is(':checked')) {
+        map.data.loadGeoJson('jsondata/BusRoutes.geojson');
+        map.data.loadGeoJson('jsondata/BusStopShelters.geojson');
+
+      } else {
+        map.data.forEach(function (feature) {
+          var name = feature.getProperty('TypeId');
+          if ((name === 'BusRoutes') || (name === 'BusStopShelters')){
+            map.data.remove(feature);
+          }
+
+        });
+      }
+    });
+
+    $('input#BikeRoutes').change(function () {
+      if ($('input#BikeRoutes').is(':checked')) {
+        map.data.loadGeoJson('jsondata/BikeTrails.geojson');
+        map.data.loadGeoJson('jsondata/OnRoadBikeTrails.geojson')
+        
+      } else {
+        map.data.forEach(function (feature) {
+          var name = feature.getProperty('TypeId');
+          //alert(name);
+          if ((name === 'BikeTrails') || (name === 'OnRoadBikeTrails')){
+            map.data.remove(feature);
+          }
+
+        });
+      }
+    });
 
     }
   </script>
