@@ -93,9 +93,13 @@
     <div class="row content">
       <div class="col-sm-8 text-left">
         <h1>Where will your business be?</h1>
-        <button onclick="getCurrentLocation()">Current Location</button>
+        <button type="button" class="btn btn-info" onclick="getCurrentLocation()">Current Location</button>
         <div class="input-group">
           <span class="input-group-addon">Location 1</span> <input id="msg_1" type="text" class="controls">
+        </div>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary">Add Pin</button>   
+          <button type="button" class="btn btn-danger">Clear Pins</button>    
         </div>
         <hr>
         <div class="embed-responsive embed-responsive-16by9">
