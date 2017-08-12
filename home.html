@@ -49,31 +49,6 @@
 </head>
 
 <body>
-
-  <!-- <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#">Logo</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
-
   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -118,33 +93,19 @@
     <div class="row content">
       <div class="col-sm-8 text-left">
         <h1>Where will your business be?</h1>
-        <button type="button" class="btn">Current Location</button>
+        <button onclick="getCurrentLocation()">Current Location</button>
         <div class="input-group">
-          <span class="input-group-addon">Location 1</span>     <input id="msg_1" type="text" class="controls" placeholder="823 W Wonderview Dr, Dunlap IL 61525">            </div>
-      
-        <div class="input-group">
-          <span class="input-group-addon">Location 2</span>     <input id="msg" type="text" class="form-control" name="msg"
-            placeholder="823 W Wonderview Dr, Dunlap IL 61525">   </div>
-      
-        <div class="input-group">
-          <span class="input-group-addon">Location 3</span>     <input id="msg" type="text" class="form-control" name="msg"
-            placeholder="823 W Wonderview Dr, Dunlap IL 61525">   </div>
+          <span class="input-group-addon">Location 1</span> <input id="msg_1" type="text" class="controls">
+        </div>
         <hr>
-        <!-- 16:9 aspect ratio -->
-
-        <div id="map" style="width:1200px;height:720px;"></div>
-
+        <div class="embed-responsive embed-responsive-16by9">
+          <div class="embed-responsive-item" id="map" style="width:1200px;height:720px;"></div>
+        </div>
       </div>
       <div class="col-sm-2 sidenav">
-        <div class="checkbox pull-left">
-          <label><input type="checkbox" value="">Construction</label>
-        </div>
-        <div class="checkbox pull-left">
-          <label><input type="checkbox" value="">Accessability Ramps</label>
-        </div>
-        <div class="checkbox pull-left">
-          <label><input type="checkbox" value="">Waist Receptacles</label>
-        </div>
+        <div class="checkbox"><label><input type="checkbox" value="">Construction</label></div>
+        <div class="checkbox"><label><input type="checkbox" value="">Accessability Ramps</label></div>
+        <div class="checkbox"><label><input type="checkbox" value="">Waist Receptacles</label></div>
       </div>
     </div>
   </div>
@@ -154,9 +115,31 @@
   </footer>
 
   <script>
+
+    function getCurrentLocation()
+    {
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) 
+        {
+          navigator.geolocation.getCurrentPosition(function(position) 
+          {
+            var pos = {lat: position.coords.latitude,lng: position.coords.longitude};
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        document.getElementById('msg_1').value = "Test2";
+        } 
+        else 
+        {
+          console.log("Can't find location");
+        }
+    }
+
     
-    function initAutocomplete() {
-      var map = new google.maps.Map(document.getElementById('map'), {
+    function initAutocomplete() 
+    {
+      var map = new google.maps.Map(document.getElementById('map'), 
+        {
           center: {
             lat: 40.693649,
             lng: -89.588986
@@ -164,11 +147,31 @@
           zoom: 13,
           mapTypeId: 'roadmap'
         }
+        );
 
-      );
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) 
+        {
+          navigator.geolocation.getCurrentPosition(function(position) 
+          {
+
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } 
+        else 
+        {
+          console.log("Can't find location");
+        }
 
       // Create the search box and link it to the UI element.
       var input = document.getElementById('msg_1');
+      document.getElementById('msg_1').placeholder = "Test";
       var searchBox = new google.maps.places.SearchBox(input);
       //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
