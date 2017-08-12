@@ -1,7 +1,7 @@
 ## Description
 
-Our project is designed to provide users of the app/website with up-to-date information on the infrastructure projects within Peoria. 
-It is designed with a user-facing webpage (app coming soon!) and a database management back-end (also coming soon)
+Our project is designed to provide users of the app/website with up-to-date information on the infrastructure projects within Peoria. <br />
+It is designed with a user-facing webpage (app coming soon!) and a database management back-end (also coming soon)<br />
 
 ## Screenshots
 
@@ -9,27 +9,27 @@ It is designed with a user-facing webpage (app coming soon!) and a database mana
 
 ## Data/APIs used
 
-Data used: 
-ArterialRecon.geojson
-BikeTrails.geojson
-BusRoutes.geojson
-BusStopShelters.geojson
-BusStopTrashCans.geojson
-Centerlines.geojson
-CouncilDistricts.geojson
-MunicipalBoundary.geojson
-NeighborhoodAssociations.geojson
-OnRoadBikeTrails.geojson
-Pavement2014.geojson
-Pavement2015.geojson
-Pavement2016.geojson
-Pavement2017.geojson
-RampConstruction.geojson
-ResidentialRecon.geojson
-SidewalkConstruction.geojson
+Data used:  <br />
+ArterialRecon.geojson <br />
+BikeTrails.geojson <br />
+BusRoutes.geojson <br />
+BusStopShelters.geojson <br />
+BusStopTrashCans.geojson <br />
+Centerlines.geojson <br />
+CouncilDistricts.geojson <br />
+MunicipalBoundary.geojson <br />
+NeighborhoodAssociations.geojson <br />
+OnRoadBikeTrails.geojson <br />
+Pavement2014.geojson <br />
+Pavement2015.geojson <br />
+Pavement2016.geojson <br />
+Pavement2017.geojson <br />
+RampConstruction.geojson <br />
+ResidentialRecon.geojson <br />
+SidewalkConstruction.geojson <br />
 
-API's Used:
-Google Maps API
+API's Used: <br />
+Google Maps API <br />
 
 ## Team Members
 
