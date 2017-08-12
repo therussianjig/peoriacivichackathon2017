@@ -104,7 +104,74 @@
         </div>
         <hr>
         <h4>Filter Construction by Date:</h4>
-        <div class="form-group">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th><label for="startYear">Start Year:</label></th>
+                <th><label for="endYear">End Year:</label></th>
+                <th><label for="startMonth">Start Month:</label></th>
+                <th><label for="endMonth">End Month:</label></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>            
+                  <select class="form-control" id="startYear">
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="form-control" id="endYear">
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                    <option>2020</option>
+                  </select>
+                </td>
+                <td>
+                  <select class="form-control" id="startMonth">
+                    <option>Jan</option>
+                    <option>Feb</option>
+                    <option>Mar</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>Aug</option>
+                    <option>Sept</option>
+                    <option>Oct</option>
+                    <option>Nov</option>
+                    <option>Dec</option>
+                  </select>
+                </td>
+                <td>
+                    <select class="form-control" id="endMonth">
+                      <option>Jan</option>
+                      <option>Feb</option>
+                      <option>Mar</option>
+                      <option>April</option>
+                      <option>May</option>
+                      <option>June</option>
+                      <option>July</option>
+                      <option>Aug</option>
+                      <option>Sept</option>
+                      <option>Oct</option>
+                      <option>Nov</option>
+                      <option>Dec</option>
+                    </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button onclick="filterCallback()">Filter By Year</button>
+        <!-- <div class="form-group">
             <label for="startYear">Start Year:</label>
             <select class="form-control" id="startYear">
               <option>2016</option>
@@ -159,8 +226,8 @@
                     <option>Dec</option>
                   </select>
                 
-                  <button onclick="filterByYear()">Filter By Year</button>
-                </div>
+                  <button onclick="filterCallback()">Filter By Year</button>
+                </div> -->
 
         <hr>
         <div class="embed-responsive embed-responsive-16by9">
@@ -183,7 +250,7 @@
   var map;
   var currentPosition;
   var markers = [];
-  
+
     function filterCallback()
     {
           var name;
@@ -194,23 +261,23 @@
           endMonth = document.getElementById('endMonth').value;
 
           map.data.forEach(function (feature) {
-            name = feature.getProperty('TypeId');
-            year = feature.getProperty('Year');
-            //alert(name);
-            if ((name === 'Pavement2017') || (name === 'ResidentialRecon')
-            || (name === 'SidewalkConstruction')
-            || (name === 'ArterialRecon')) {
+            // name = feature.getProperty('TypeId');
+            // year = feature.getProperty('Year');
+            // //alert(name);
+            // if ((name === 'Pavement2017') || (name === 'ResidentialRecon')
+            // || (name === 'SidewalkConstruction')
+            // || (name === 'ArterialRecon')) {
               
-              if ((year >= startYear) && (year <= endYear))
-              {
+            //   if ((year >= startYear) && (year <= endYear))
+            //   {
 
-              }
+            //   }
 
-              else{
-                console.log(year + " ");
+            //   else{
+            //     console.log(year + " ");
                 map.data.remove(feature);
-              }
-            }
+              // }
+            // }
           });
     }
 
@@ -323,11 +390,6 @@
         if (places.length == 0) {
           return;
         }
-
-        //Clear out the old markers.
-        markers.forEach(function (marker) {
-          marker.setMap(null);
-        });
 
         // For each place, get the icon, name and location.
         var bounds = new google.maps.LatLngBounds();
