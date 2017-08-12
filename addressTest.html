@@ -1,206 +1,340 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <title>Places Searchbox</title>
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #description {
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-      }
+<html lang="en">
 
-      #infowindow-content .title {
-        font-weight: bold;
-      }
+<head>
+  <title>Peoria New Business Site</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
 
-      #infowindow-content {
-        display: none;
-      }
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 
-      #map #infowindow-content {
-        display: inline;
-      }
+    .row.content {
+      height: 450px
+    }
+    /* Set gray background color and 100% height */
 
-      .pac-card {
-        margin: 10px 10px 0 0;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        background-color: #fff;
-        font-family: Roboto;
-      }
+    .sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    /* Set black background color, white text and some padding */
 
-      #pac-container {
-        padding-bottom: 12px;
-        margin-right: 12px;
-      }
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    /* On small screens, set height to 'auto' for sidenav and grid */
 
-      .pac-controls {
-        display: inline-block;
-        padding: 5px 11px;
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
       }
-
-      .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
+      .row.content {
+        height: auto;
       }
+    }
+  </style>
+</head>
 
-      #pac-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 12px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 400px;
+<body>
+
+  <!-- <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+         <span class = "sr-only">Toggle navigation</span>
+         <span class = "icon-bar"></span>
+         <span class = "icon-bar"></span>
+         <span class = "icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="#">Peoria Business</a>
+      </div>
+      <div class="collapse navbar-collapse" id="example-navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Planning</a></li>
+          <li><a href="#">Participate</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               Relevent Links
+              <b class="caret"></b>
+              </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Ameren</a></li>
+              <li><a href="#">PDC</a></li>
+              <li><a href="#">Construction people</a></li>
+
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+
+              <li class="divider"></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid text-center">
+    <div class="row content">
+      <div class="col-sm-8 text-left">
+        <h1>Where will your business be?</h1>
+        <button type="button" class="btn">Current Location</button>
+        <div class="input-group">
+          <span class="input-group-addon">Location 1</span>     <input id="msg_1" type="text" class="controls" placeholder="823 W Wonderview Dr, Dunlap IL 61525">            </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Location 2</span>     <input id="msg" type="text" class="form-control" name="msg"
+            placeholder="823 W Wonderview Dr, Dunlap IL 61525">   </div>
+
+        <div class="input-group">
+          <span class="input-group-addon">Location 3</span>     <input id="msg" type="text" class="form-control" name="msg"
+            placeholder="823 W Wonderview Dr, Dunlap IL 61525">   </div>
+        <hr>
+        <!-- 16:9 aspect ratio -->
+
+        <div id="map" style="width:1200px;height:720px;"></div>
+
+      </div>
+      <div class="col-sm-2 sidenav">
+        <div class="checkbox pull-left">
+          <label><input type="checkbox" id="Construction" value="">Construction</label>
+        </div>
+        <div class="checkbox pull-left">
+            <label><input type="checkbox" id="BusRoutes" value="">Bus Routes</label>
+          </div>
+
+          <div class="checkbox pull-left">
+              <label><input type="checkbox" id="BikeRoutes" value="">Bike Routes</label>
+            </div>
+
+        <div class="checkbox pull-left">
+          <label><input type="checkbox" value="">Accessability Ramps</label>
+        </div>
+        <div class="checkbox pull-left">
+          <label><input type="checkbox" value="">Waist Receptacles</label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="container-fluid text-center">
+    <p>Footer Text</p>
+  </footer>
+
+  <script>
+    var map;
+
+    $('input#Construction').change(function () {
+      if ($('input#Construction').is(':checked')) {
+        map.data.loadGeoJson('jsondata/ArterialRecon.geojson');
+        map.data.loadGeoJson('jsondata/ResidentialRecon.geojson');
+        map.data.loadGeoJson('jsondata/Pavement2017.geojson');
+        //map.data.loadGeoJson('jsondata/RampConstruction.geojson');
+        map.data.loadGeoJson('jsondata/SidewalkConstruction.geojson');
+      } else {
+        map.data.forEach(function (feature) {
+          var name = feature.getProperty('TypeId');
+          //alert(name);
+          if ((name === 'Pavement2017') || (name === 'ResidentialRecon')
+          || (name === 'SidewalkConstruction')
+          || (name === 'ArterialRecon')) {
+            map.data.remove(feature);
+          }
+
+        });
       }
+    });
 
-      #pac-input:focus {
-        border-color: #4d90fe;
+    $('input#BusRoutes').change(function () {
+      if ($('input#BusRoutes').is(':checked')) {
+        map.data.loadGeoJson('jsondata/BusRoutes.geojson');
+        map.data.loadGeoJson('jsondata/BusStopShelters.geojson');
+
+      } else {
+        map.data.forEach(function (feature) {
+          var name = feature.getProperty('TypeId');
+          //alert(name);
+          if ((name === 'BusRoutes') || (name === 'BusStopShelters')){
+            map.data.remove(feature);
+          }
+
+        });
       }
+    });
 
-      #title {
-        color: #fff;
-        background-color: #4d90fe;
-        font-size: 25px;
-        font-weight: 500;
-        padding: 6px 12px;
+    $('input#BikeRoutes').change(function () {
+      if ($('input#BikeRoutes').is(':checked')) {
+        map.data.loadGeoJson('jsondata/BikeTrails.geojson');
+        map.data.loadGeoJson('jsondata/OnRoadBikeTrails.geojson')
+        
+      } else {
+        map.data.forEach(function (feature) {
+          var name = feature.getProperty('TypeId');
+          //alert(name);
+          if ((name === 'BikeTrails') || (name === 'OnRoadBikeTrails')){
+            map.data.remove(feature);
+          }
+
+        });
       }
-      #target {
-        width: 345px;
-      }
-    </style>
-  </head>
-  <body>
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
-    <script>
-      // This example adds a search box to a map, using the Google Place Autocomplete
-      // feature. People can enter geographical searches. The search box will return a
-      // pick list containing a mix of places and predicted search terms.
+    });
 
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-      function initAutocomplete() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          //Center map in Peoria
-          center: {lat: 40.693649, lng: -89.588986},
+    function initAutocomplete() {
+      map = new google.maps.Map(document.getElementById('map'), {
+          center: {
+            lat: 40.693649,
+            lng: -89.588986
+          },
           zoom: 13,
           mapTypeId: 'roadmap'
         }
-        
-        );
 
-        // Create the search box and link it to the UI element.
-        var input = document.getElementById('pac-input');
-        var searchBox = new google.maps.places.SearchBox(input);
-        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+      );
 
-        // Bias the SearchBox results towards current map's viewport.
-        map.addListener('bounds_changed', function() {
-          searchBox.setBounds(map.getBounds());
+      // Create the search box and link it to the UI element.
+      var input = document.getElementById('msg_1');
+      var searchBox = new google.maps.places.SearchBox(input);
+
+      // Bias the SearchBox results towards current map's viewport.
+      map.addListener('bounds_changed', function () {
+        searchBox.setBounds(map.getBounds());
+      });
+
+      var markers = [];
+      // Listen for the event fired when the user selects a prediction and retrieve
+      // more details for that place.
+      searchBox.addListener('places_changed', function () {
+        var places = searchBox.getPlaces();
+
+        if (places.length == 0) {
+          return;
+        }
+
+        // Clear out the old markers.
+        markers.forEach(function (marker) {
+          marker.setMap(null);
         });
+        markers = [];
 
-        var markers = [];
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener('places_changed', function() {
-          var places = searchBox.getPlaces();
-
-          if (places.length == 0) {
+        // For each place, get the icon, name and location.
+        var bounds = new google.maps.LatLngBounds();
+        places.forEach(function (place) {
+          if (!place.geometry) {
+            console.log("Returned place contains no geometry");
             return;
           }
-
-          // Clear out the old markers.
-          markers.forEach(function(marker) {
-            marker.setMap(null);
-          });
-          markers = [];
-
-          // For each place, get the icon, name and location.
-          var bounds = new google.maps.LatLngBounds();
-          places.forEach(function(place) {
-            if (!place.geometry) {
-              console.log("Returned place contains no geometry");
-              return;
-            }
-            var icon = {
-              url: place.icon,
-              size: new google.maps.Size(71, 71),
-              origin: new google.maps.Point(0, 0),
-              anchor: new google.maps.Point(17, 34),
-              scaledSize: new google.maps.Size(25, 25)
-            };
-
-            // Create a marker for each place.
-            markers.push(new google.maps.Marker({
-              map: map,
-              icon: icon,
-              title: place.name,
-              position: place.geometry.location
-            }));
-
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-          map.fitBounds(bounds);
-        });
-        
-        map.data.loadGeoJson('jsondata/ResidentialRecon.geojson');
-        map.data.loadGeoJson('jsondata/Pavement2017.geojson');
-
-        setTimeout(function() {
-          map.data.forEach(function(feature){
-          console.log("here");
-          console.log("Id from Google's feature: " + feature.getProperty('TypeId'));
-        });
-        }, 4500);
-
-        map.data.setStyle(function(feature) 
-        {
-          var name = feature.getProperty('TypeId');
-          //alert(name);
-          if (name === 'Pavement2017')
-          {
-            color = 'blue';
-          }
-
-          else if (name === 'ResidentialRecon')
-          {
-            color = 'green';
-          }
-          return {
-            fillColor: color,
-            strokeWeight: 1
+          var icon = {
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25)
           };
-      });
-      }
 
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ9Mp4q9ApzFom7zGpCplPzoVnm6t88MY&libraries=places&callback=initAutocomplete"
-         async defer></script>
-  </body>
+          // Create a marker for each place.
+          markers.push(new google.maps.Marker({
+            map: map,
+            icon: icon,
+            title: place.name,
+            position: place.geometry.location
+          }));
+
+          if (place.geometry.viewport) {
+            // Only geocodes have viewport.
+            bounds.union(place.geometry.viewport);
+          } else {
+            bounds.extend(place.geometry.location);
+          }
+        });
+        map.fitBounds(bounds);
+      });
+
+
+      map.data.setStyle(function (feature) {
+        var name = feature.getProperty('TypeId');
+        //alert(name);
+        if ((name === 'Pavement2017') || (name === 'ResidentialRecon')
+          || (name === 'SidewalkConstruction')
+          || (name === 'ArterialRecon')) {
+          innerColor = 'red';
+          strokeColor = 'black';
+          weight = 1;
+          }
+        else if (name === 'BusRoutes')
+        {
+          weight = 3;
+          innerColor = 'black';
+          strokeColor = 'blue';
+        }
+
+        else if (name ==='BusStopShelters')
+        {
+          //alert('shelter');
+          weight = 6;
+          innerColor = 'black';
+          strokeColor = 'black';
+        }
+
+        else if ((name === 'BikeTrails') || (name === 'OnRoadBikeTrails'))
+        {
+          weight = 3;
+          innerColor = 'black'
+          strokeColor = 'green';
+        }
+        return {
+          fillColor: innerColor,
+          strokeWeight: weight,
+          strokeColor: strokeColor
+        };
+      });
+
+
+
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJ9Mp4q9ApzFom7zGpCplPzoVnm6t88MY&libraries=places&callback=initAutocomplete"
+    async defer>
+  </script>
+</body>
+
 </html>
